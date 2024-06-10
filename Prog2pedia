@@ -1,0 +1,76 @@
+//Sistema de Biblioteca online de conteúdos de Orientação a Objetos
+
+Main
+association Prog2pedia
+---
+---
+---
+Prog2pedia
+composes Pagina, Colaborador, Historico
+---
+- paginas: HashMap<String, Pagina>
+- colaboradores: HashSet<Colaborador>
+- historicos: ArrayList<Historico>
+---
++ Prog2pedia()
++ cadastraColaborador(nome: String, email: String): void
++ cadastraPagina(titulo: String, colaborador: String): void
++ lePagina(titulo: String): String
++ lePagina(): String
+- existePagina(titulo: String): boolean
++ editaPagina(titulo: String, email: String, conteudo: String): void
++ cadastraHistorico(data: LocalDate, autor: String, titulo: String, conteudo: String): void
++ adicionaColaboradorEspecial(titulo: String, email: String): void
+- existeColaborador(email: String): boolean
++ listaColabores(): String
++ listaHistorico(): String
++ listaHistorico(data: LocalDate): String
++ listaHistorico(autor: String): String
++ adicionaTemasPagina(titulo: String, tema: String): void
++ listaPaginasPorTema(tema: String): String
+---
+Pagina
+association Colaborador
+---
+- titulo: String
+- conteudo: String
+- temas: HashSet<String>
+- colaboradoresEspeciais: HashSet<Colaborador>
+---
++ Pagina(titulo: String)
++ getTitulo(): String
++ getConteudo(): String
++ getTema(): HashSet<String>
++ setConteudo(novoConteudo: String): void
++ cadastraColaboradorEspecial(colaborador: Colaborador): void
++ verificaColaboradorEspecial(email: String): boolean
++ adicionaTema(tema: String): void
++ equals(obj: Object): boolean
++ hashCode(): int
++ toString(): String
+---
+Colaborador
+---
+- nome: String
+- email: String
+- qtdAtualizacoes: int
+---
++ Colaborador(nome: String, email: String)
++ getEmail(): String
++ incrementaAtualizacoes(): void
++ equals(obj: Object): boolean
++ hashCode(): int
++ toString(): String
+---
+Historico
+---
+- data: LocalDate
+- autor: String
+- titulo: String
+- conteudo: String
+---
++ Historico(data: LocalDate, autor: String, titulo: String, conteudo: String)
++ getData(): LocalDate
++ getAutor(): String
++ toString(): String
+---
